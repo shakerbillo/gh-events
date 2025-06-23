@@ -3,7 +3,18 @@ on:
   pull_request:
     types: 
       - opened
+    branches: 
+      - main # Matches the main branch
+      - 'dev-*' # Matches any branch starting with 'dev-'
+      - 'feat/**' # Matches any branch starting with 'feat/'
   workflow_dispatch: 
+  push:
+    branches: 
+      - main # Matches the main branch
+      - 'dev-*' # Matches any branch starting with 'dev-'
+      - 'feat/**' # Matches any branch starting with 'feat/'
+    paths-ignore: 
+      - '.github/workflows/*' # Ignore changes to this workflow file
 jobs:
   deploy:
     runs-on: ubuntu-latest
